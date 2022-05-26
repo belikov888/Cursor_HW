@@ -1,21 +1,16 @@
 let n = + prompt('Введіть число N:', '');
 
-while (Number.isInteger(n) == false) {
-    alert('Введіть ціле числове значення N:');
-    n = + prompt('Введіть число N', '');
+while (!Number.isInteger(n) || n < 0) {
+    alert('Введіть ціле невідємне числове значення N:');
+    n = + prompt('Введіть число N: ', '');
 }
 
 console.log(`Значення N дорівнює: ${n}`);
 
 let m = + prompt('Введіть число M:', '');
 
-while ((Number.isInteger(m) == false)) {
-    alert('Введіть ціле числове значення M:');
-    m = + prompt('Введіть число M', '');
-}
-
-while (m < n) {
-    alert('Значення M повинно бути більш за число N');
+while (!Number.isInteger(m) || m < n) {
+    alert('Введіть ціле числове значення більш за N:');
     m = + prompt('Введіть число M', '');
 }
 
