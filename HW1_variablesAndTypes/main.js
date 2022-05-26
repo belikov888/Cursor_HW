@@ -28,9 +28,9 @@ const mean = Math.round(sumValues / 3 * 100) / 100;
 console.log(`Середня вартість товарів: ${mean}`);
 
 const yourSale = Math.round(Math.random() * 100);
-console.log(`Ваша знишка складає: ${yourSale}`);
+console.log(`Ваша знишка складає: ${yourSale} %`);
 
-const sumWithSale = Math.round(sumValues * yourSale / 100 * 100) /100;
+const sumWithSale = Math.round((sumValues - (sumValues * yourSale / 100)) * 100) / 100;
 console.log(`Вартість зі знижкою: ${sumWithSale}`);
 
 const costPrice = sumValues / 2;
