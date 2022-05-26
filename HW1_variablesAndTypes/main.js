@@ -1,17 +1,17 @@
-const bread = 15.678;
-const cheese = 123.965;
-const butter = 90.2345;
+const BREAD = 15.678;
+const CHEESE = 123.965;
+const BUTTER = 90.2345;
 
-const maxValue = Math.max(bread, cheese, butter);
+const maxValue = Math.max(BREAD, CHEESE, BUTTER);
 console.log(`Максимальна ціна: ${maxValue}`);
 
-const minValue = Math.min(bread, cheese, butter);
+const minValue = Math.min(BREAD, CHEESE, BUTTER);
 console.log(`Мінімальна ціна: ${minValue}`);
 
-const sumValues = bread + cheese + butter;
+const sumValues = BREAD + CHEESE + BUTTER;
 console.log(`Вартість всіх товарів: ${sumValues}`);
 
-const roundValue = Math.floor(bread) + Math.floor(cheese) + Math.floor(butter);
+const roundValue = Math.floor(BREAD) + Math.floor(CHEESE) + Math.floor(BUTTER);
 console.log(`Округлена сума товарів: ${roundValue}`);
 
 const roundValueHundred = Math.round(roundValue / 100)*100;
