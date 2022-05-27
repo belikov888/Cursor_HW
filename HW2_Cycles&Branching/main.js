@@ -13,7 +13,7 @@ console.log(`Значення N дорівнює: ${n}`);
 
 m = + prompt('Введіть число M:', '');
 
-while (!Number.isInteger(m) || m < n) {
+while (!Number.isInteger(m) || m <= n) {
     alert('Введіть ціле числове значення більш за N:');
     m = + prompt('Введіть число M', '');
 }
