@@ -1,4 +1,8 @@
-let n = + prompt('Введіть число N:', '');
+let n;
+let m;
+let skipEven;
+
+n = + prompt('Введіть число N:', '');
 
 while (!Number.isInteger(n) || n < 0) {
     alert('Введіть ціле невідємне числове значення N:');
@@ -7,7 +11,7 @@ while (!Number.isInteger(n) || n < 0) {
 
 console.log(`Значення N дорівнює: ${n}`);
 
-let m = + prompt('Введіть число M:', '');
+m = + prompt('Введіть число M:', '');
 
 while (!Number.isInteger(m) || m < n) {
     alert('Введіть ціле числове значення більш за N:');
@@ -16,22 +20,16 @@ while (!Number.isInteger(m) || m < n) {
 
 console.log(`Значення M дорівнює: ${m}`);
 
-let skipEven = confirm('Чи потрібно пропускати парні числа?');
+skipEven = confirm('Чи потрібно пропускати парні числа?');
 console.log(`Потрібно пропускати парні числа: ${skipEven}`);
 
-if (skipEven){
-    let sum = 0;
-    for(let i = n; i <= m; i++) {
-        if ((i % 2) != 0){
-            sum = sum + i;
-        }
+let sum = 0;
+for (let i = n; i <= m; i++) {
+    if (skipEven && i % 2 == 0) {
+       
     }
-    console.log(`Сума без парних чисел дорівнює: ${sum}`);   
-}
-else{
-    let sum = 0;
-    for(let i = n; i <= m; i++) {
+    else {
         sum = sum + i;
     }
-    console.log(`Сума чисел дорівнює: ${sum}`);    
 }
+console.log(`Сума чисел дорівнює: ${sum}`);
