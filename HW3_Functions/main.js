@@ -82,7 +82,7 @@ function convertCurrency(value) {
             case 'A':
                 currUan = currUan + letter;
                 break;
-            case 'N':
+            case 'H':
                 currUan = currUan + letter;
                 break;
         }
@@ -94,7 +94,7 @@ function convertCurrency(value) {
         return result + ' грн.';
     }
     else {
-        if(currUan === 'UAN' || currUan === 'uan') {
+        if(currUan === 'UAH') {
             result = +number / 35;
             result = result.toFixed(2);
             return result + '$';
@@ -143,6 +143,7 @@ function isPalyndrom(rule) {
 }
 
 function deleteDuplicateLetter(rule) {
+    rule = rule.toLowerCase();
     rule = rule.replace(/\s+/g, '');
     let result = '';
     let preResult = '';
@@ -154,7 +155,7 @@ function deleteDuplicateLetter(rule) {
             if(y == i){
             }
             else {
-                if(m == n || m == n.toUpperCase() || m == n.toLowerCase()){
+                if(m == n){
                     preResult = preResult + n;
                 }  
             } 
