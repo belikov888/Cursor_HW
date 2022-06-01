@@ -16,9 +16,7 @@ function getPairs(students) {
 function getProject(pairs) {
     const arr = [];
     for(let i = 0; pairs[i]; i++) {
-        let n = pairs[i];
-        let m = [n[0] + ' i ' + n[1], themes[i]];
-        arr.push(m);
+        arr.push([pairs[i].join(' i '), themes[i]]);
     }
     return arr;
 }
@@ -26,22 +24,18 @@ function getProject(pairs) {
 function getGrade(students) {
     const arr = [];
     for(let i = 0; students[i]; i++) {
-        let n = students[i]; 
-        let m = marks[i];
-        arr.push([n, m]);
+        arr.push([students[i], marks[i]]);
     }
     return arr;
 }
 
 function getGradeRandom(projects) { 
-    let random; 
     const arr = [];
     for(let i = 0; projects[i]; i++) {
-        m = projects[i].slice();
-        random = Math.random() * 4 + 1;
+        let random = Math.random() * 4 + 1;
         random = random.toFixed();
-        m.push(random);
-        arr.push(m);
+        arr.push(projects[i].slice());
+        arr[i].push(random);
     }
     return arr;
 }
