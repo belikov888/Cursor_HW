@@ -19,23 +19,9 @@ function getDegreeNumber(a, n) {
 }
 
 function getUpperCase(str) {
-    
-    let fistSimbol = str[0];
-    if(fistSimbol != fistSimbol.toUpperCase()){
-        fistSimbol = fistSimbol.toUpperCase();
-    }
-
-    let result = '';
-    for (let n = 1; str[n]; n++) {
-    let i = (str[n]);
-    if (i != i.toUpperCase()) {
-        result = result + i;
-    }
-    else{
-        result = result + i.toLowerCase();
-    }
-    }
-    return fistSimbol + result;
+    let fistSimbol = str[0].toUpperCase();
+    let otherSimbols = str.substring(1).toLowerCase();
+    return fistSimbol + otherSimbols;
 }
 
 function getSumWithTax(sum) {
@@ -51,9 +37,10 @@ function getRandomNumber(a, b) {
 
 function countLetter(a, str) {
     let result = 0;
+    str = str.toLowerCase();
     for(let n = 0; str[n]; n++) {
         let letter = str[n];
-        if((letter == a) || letter == a.toUpperCase() || letter == a.toLowerCase()){
+        if(letter == a){
             result = result + 1;
         }
     }
@@ -62,44 +49,29 @@ function countLetter(a, str) {
 
 function convertCurrency(value) {
     value = String(value);
-    let currDol = '';
-    let currUan = '';
     let number = '';
     let result;
     value = value.toUpperCase();
-    for(let n = 0; value[n]; n++) {
-        let letter = value[n];
+
+    for(let i = 0; value[i]; i++) {
+        let letter = value[i];
         if(+letter >= 0){
             number = number + String(letter);
         }
-        switch(letter) {
-            case '$':
-                currDol = true;
-                break;
-            case 'U':
-                currUan = currUan + letter;
-                break;
-            case 'A':
-                currUan = currUan + letter;
-                break;
-            case 'H':
-                currUan = currUan + letter;
-                break;
-        }
     }
 
-    if(currDol){
+    if(value.substring(value.length - 3 ) == 'UAH') {
+        result = +number / 35;
+        result = result.toFixed(2);
+        return result + '$';
+    }
+    else if(value.substring(value.length - 1 ) == '$') {
         result = +number * 35;
         result = result.toFixed(2);
         return result + ' грн.';
     }
     else {
-        if(currUan === 'UAH') {
-            result = +number / 35;
-            result = result.toFixed(2);
-            return result + '$';
-        }
-       return 'Невідома валюта конвертації';
+        return 'Невідома валюта конвертації';
     }
 }
 
@@ -108,7 +80,6 @@ function getRandomPassword(a = 8) {
     for(let i = 1; i <= a; i++) {
         let n = Math.random() * 10;
         n = Math.floor(n);
-        n = n.toFixed();
         result = result + n;
     }
     return result;
@@ -145,25 +116,18 @@ function isPalyndrom(rule) {
 function deleteDuplicateLetter(rule) {
     rule = rule.toLowerCase();
     rule = rule.replace(/\s+/g, '');
-    let result = '';
-    let preResult = '';
     for(let i = 0; rule[i]; i++) {
-        n = rule[i];
-        preResult = n;
         for(let y = 0; rule[y]; y++) {
-            let m = rule[y];
             if(y == i){
             }
             else {
-                if(m == n){
-                    preResult = preResult + n;
+                if(rule[y] == rule[i]){
+                    rule = deleteLetters(rule[i], rule)
                 }  
             } 
         }
-        if(n == preResult) {
-            result = result + preResult;}
     }
-    return result;
+    return rule;
 }
 
 console.log(`Функція №1 отримує будь-яке число та виводить найбільшу цифру в цьому числі:  ${getMaxDigit(1236)}`);
