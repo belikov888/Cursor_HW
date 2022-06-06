@@ -96,38 +96,24 @@ function deleteLetters(litter, str) {
     return result;
 }
 
-function isPalyndrom(rule) {
+function isPalyndrom(rule) { 
     let result = '';
-    let inner = '';
-    let i;
-    rule = rule.replace(/\s+/g, '');
-    rule = rule.toUpperCase();
-    for(i = 0; rule[i]; i++) {
-        let n = rule[i];
-        inner = inner + n;
-    }
-    for(i = i - 1; rule[i]; i--) {
-        let n = rule[i];
-        result = result + n;
-    }
-    return result === inner;
+    rule = rule.toLowerCase().split(' ').join('');
+    result = rule.split('').reverse().join('');
+    return rule === result;
 }
 
 function deleteDuplicateLetter(rule) {
     rule = rule.toLowerCase();
-    rule = rule.replace(/\s+/g, '');
-    for(let i = 0; rule[i]; i++) {
-        for(let y = 0; rule[y]; y++) {
-            if(y == i){
-            }
-            else {
-                if(rule[y] == rule[i]){
-                    rule = deleteLetters(rule[i], rule)
-                }  
-            } 
+    rule = rule.split(' ').join('');
+    let arr = rule;
+    for(let i = 0; i < rule.length; i++) {
+        let idSimbol = rule.lastIndexOf(rule[i]);
+        if(idSimbol !== i) {
+            arr = arr.split('').filter(iteam => iteam !== rule[i]).join('');
         }
     }
-    return rule;
+    return arr;
 }
 
 console.log(`Функція №1 отримує будь-яке число та виводить найбільшу цифру в цьому числі:  ${getMaxDigit(1236)}`);
